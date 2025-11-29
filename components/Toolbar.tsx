@@ -18,19 +18,19 @@ export const Toolbar: React.FC<ToolbarProps> = ({
   hasInput
 }) => {
   return (
-    <div className="bg-white border-b border-gray-200 px-4 py-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm z-10 sticky top-0 no-print">
+    <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm z-10 sticky top-0 no-print transition-colors duration-200">
       <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
         
         {/* Tone Selector */}
         <div className="flex items-center space-x-2">
-          <label className="text-sm font-medium text-gray-600 flex items-center">
+          <label className="text-sm font-medium text-gray-600 dark:text-gray-300 flex items-center">
             <Settings className="w-4 h-4 mr-1" />
             Tone:
           </label>
           <select 
             value={options.tone}
             onChange={(e) => onOptionsChange({ ...options, tone: e.target.value as Tone })}
-            className="block w-40 pl-3 pr-10 py-1.5 text-sm border-gray-300 focus:outline-none focus:ring-brand-500 focus:border-brand-500 sm:text-sm rounded-md border bg-gray-50"
+            className="block w-40 pl-3 pr-10 py-1.5 text-sm border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-brand-500 focus:border-brand-500 sm:text-sm rounded-md border bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
             {Object.values(Tone).map((t) => (
               <option key={t} value={t}>{t}</option>
@@ -38,26 +38,26 @@ export const Toolbar: React.FC<ToolbarProps> = ({
           </select>
         </div>
 
-        <div className="h-6 w-px bg-gray-300 hidden sm:block"></div>
+        <div className="h-6 w-px bg-gray-300 dark:bg-gray-600 hidden sm:block"></div>
 
         {/* Checkboxes */}
         <div className="flex items-center gap-4">
-          <label className="inline-flex items-center text-sm text-gray-700 cursor-pointer">
+          <label className="inline-flex items-center text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
             <input 
               type="checkbox" 
               checked={options.fixGrammar}
               onChange={(e) => onOptionsChange({ ...options, fixGrammar: e.target.checked })}
-              className="rounded text-brand-600 focus:ring-brand-500 h-4 w-4 border-gray-300" 
+              className="rounded text-brand-600 focus:ring-brand-500 h-4 w-4 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700" 
             />
             <span className="ml-2">Fix Grammar</span>
           </label>
 
-          <label className="inline-flex items-center text-sm text-gray-700 cursor-pointer">
+          <label className="inline-flex items-center text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
             <input 
               type="checkbox" 
               checked={options.includeSummary}
               onChange={(e) => onOptionsChange({ ...options, includeSummary: e.target.checked })}
-              className="rounded text-brand-600 focus:ring-brand-500 h-4 w-4 border-gray-300" 
+              className="rounded text-brand-600 focus:ring-brand-500 h-4 w-4 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700" 
             />
             <span className="ml-2">Add Summary</span>
           </label>
@@ -69,7 +69,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
         disabled={isProcessing || !hasInput}
         className={`w-full sm:w-auto flex items-center justify-center px-6 py-2 rounded-lg font-semibold text-white shadow-md transition-all ${
           isProcessing || !hasInput 
-            ? 'bg-gray-400 cursor-not-allowed opacity-75' 
+            ? 'bg-gray-400 dark:bg-gray-600 cursor-not-allowed opacity-75' 
             : 'bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-700 hover:to-indigo-700 active:scale-95'
         }`}
       >
