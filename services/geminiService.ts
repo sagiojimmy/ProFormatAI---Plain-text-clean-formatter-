@@ -1,10 +1,11 @@
 import { GoogleGenAI } from "@google/genai";
 import { Tone, FormattingOptions } from '../types';
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 export const formatTextWithAI = async (text: string, options: FormattingOptions): Promise<string> => {
   if (!text.trim()) return "";
+
+  // Initialize client lazily to prevent runtime crashes during app load if process.env is missing
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
   const prompt = `
     You are an expert professional editor and document formatter. 
